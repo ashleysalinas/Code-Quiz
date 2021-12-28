@@ -1,6 +1,9 @@
 var question = document.querySelector(".question-card");
 var startButton = document.querySelector(".start-button");
-var timeCount = 10;
+var timerCard = document.querySelector(".timer-card");
+var introCard = document.querySelector(".intro-card")
+var timerCount = 10;
+var counter = 0;
 
 var questionsList = [
     {name: "Which of the following is NOT a language used for building pages?",
@@ -28,5 +31,23 @@ var questionsList = [
 startButton.addEventListener("click", startGame)
 
 function startGame() {
+    startTimer();
+    //Erases introductory message
+    introCard.textContent = "";
 
+    //Displays question
+    function displayQuestion() {
+        question.textContent = questionsList[counter];
+    }
+};
+
+//Creates countdown timmer
+function startTimer() {
+    timer = setInterval(function() {
+        timerCount--;
+        timerCard.textContent = "Time remaining: " + timerCount
+    if (timerCount == 0) {
+        clearInterval(timer)
+    }
+    }, 1000)
 }
