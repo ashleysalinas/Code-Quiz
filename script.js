@@ -24,9 +24,9 @@ var questionsList = [
     answer: "A !== B"
     },
 ]
-
+//Allows the start button to trigger game
 startButton.addEventListener("click", startGame)
 
 function startGame() {
-    
+
 }
