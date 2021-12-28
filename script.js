@@ -4,7 +4,7 @@ var timerCard = document.querySelector(".timer-card");
 var introCard = document.querySelector(".intro-card");
 var answerCard = document.querySelector(".answer-card");
 var scoreCard = document.querySelector(".score-card")
-var timerCount = 10;
+var timerCount = 60;
 var counter = 0;
 var scoreCounter = 0;
 
@@ -34,14 +34,11 @@ var questionsList = [
 startButton.addEventListener("click", startGame)
 
 function startGame() {
-    startTimer();
     //Erases introductory message
     introCard.textContent = "";
     //introCard.style.visibility = "hidden";
     //Displays question
     displayQuestion();
-    //Displays score
-    countingScore();
 };
 
 //Creates countdown timmer
@@ -56,34 +53,29 @@ function startTimer() {
 }
 
 function displayQuestion() {
+    startButton.style.visibility = "hidden"
+    startTimer();
     var currentQuestion = questionsList[counter];
     question.textContent = currentQuestion.name;
-    displayAnswers();
-    
-    //For loop creates an answer button for each choice
-    var answerButton;
-    function displayAnswers() {
-        for (var i = 0; i < currentQuestion.choices.length; i++) {
-            const answerButton = document.createElement("Button");
-            answerButton.textContent = currentQuestion.choices[i];
+    currentQuestion.choices.forEach(function(item) {
+            var answerButton = document.createElement("Button");
+            answerButton.textContent = item;
             answerButton.setAttribute("value", answerButton.textContent);
             answerCard.append(answerButton);
             answerButton.addEventListener("click", answerClick);
-            function answerClick() {
-                if (answerButton.value === currentQuestion.answer) {
-                    console.log("working");
-                    scoreCounter++;
-                } else {
-                    console.log("still working")
-                    scoreCounter--;
-                }
-                counter++;
-            }
-        }
-    }
+    })
 }
-
-function countingScore() {
-    localStorage.getItem("scoreCount", scoreCounter);
-    scoreCard.textContent = "Score: " + scoreCounter;
+function answerClick(answerButton) {
+    answerButton.preventDefault();
+    if (answerButton.value === question.answer) {
+        scoreCounter++; //Adds to score count upon clicking correct answer
+        scoreCard.textContent = "Score: " + scoreCounter;
+        localStorage.setItem("scoreCount", scoreCounter);
+    } else {
+        timerCount -= 5; //Takes 5 seconds away for every wrong answer
+        scoreCounter--; //Takes away points for incorrect answer
+        scoreCard.textContent = "Score: " + scoreCounter;
+        localStorage.setItem("scoreCount", scoreCounter);
+    }
+    counter++
 }
