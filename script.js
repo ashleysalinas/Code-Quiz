@@ -1,7 +1,8 @@
 var question = document.querySelector(".question-card");
 var startButton = document.querySelector(".start-button");
 var timerCard = document.querySelector(".timer-card");
-var introCard = document.querySelector(".intro-card")
+var introCard = document.querySelector(".intro-card");
+var answerCard = document.querySelector(".answer-card");
 var timerCount = 10;
 var counter = 0;
 
@@ -36,9 +37,7 @@ function startGame() {
     introCard.textContent = "";
 
     //Displays question
-    function displayQuestion() {
-        question.textContent = questionsList[counter];
-    }
+    displayQuestion();
 };
 
 //Creates countdown timmer
@@ -50,4 +49,18 @@ function startTimer() {
         clearInterval(timer)
     }
     }, 1000)
+}
+
+function displayQuestion() {
+    var currentQuestion = questionsList[counter];
+    question.textContent = currentQuestion.name;
+    displayAnswers();
+
+    function displayAnswers() {
+        for (var i = 0; i < currentQuestion.choices.length; i++) {
+            var answerButton = document.createElement("Button");
+            answerButton.textContent = currentQuestion.choices[i];
+            answerCard.append(answerButton)
+        }
+    }
 }
