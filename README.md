@@ -4,4 +4,9 @@ Week 4 - Web APIs assignment for the Trilogy/Southern Methodist University Web D
 ## About
 This simple web app utilizes browser APIs to test users on their knowledge of HTML/CSS/Javascript.
 
+## Built With
+* HTML
+* CSS
+* Javascript
+* Web APIs
 
