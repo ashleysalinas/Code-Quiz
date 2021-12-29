@@ -4,6 +4,8 @@ var timerCard = document.querySelector(".timer-card");
 var introCard = document.querySelector(".intro-card");
 var answerCard = document.querySelector(".answer-card");
 var scoreCard = document.querySelector(".score-card")
+var gameOverCard = document.querySelector(".game-over-card")
+var endgameScore = document.querySelector("#endgame-score")
 var timerCount = 60;
 var counter = 0;
 var scoreCounter = 0;
@@ -30,7 +32,24 @@ var questionsList = [
     choices: ["A !== B", "A >= B", "A === B", "A || B"],
     answer: "A !== B"
     },
+    {name: "What does the acronym \"DOM\" stand for?",
+    choices: ["Document Object Mode", "Document Object Model", "Download Object Manual", "Document Own Maker"],
+    answer: "Document Object Model"
+    },
+    {name: "What is another name for the back-end of web development?",
+    choices: ["Driver side", "Development side", "Client side", "Server side"],
+    answer: "Server side"
+    },
+    {name: "Which of the following is a valid \"for\" loop in Javascript?",
+    choices: ["For in", "For out", "A & B", "None of the above"],
+    answer: "A & B"
+    },
+    {name: "What is the attribute tag in HTML?",
+    choices: ["<atr>", "<link>", "<a>", "<tag>"],
+    answer: "<a>>"
+    },
 ]
+
 //Allows the start button to trigger game
 startButton.addEventListener("click", startGame)
 
@@ -51,11 +70,12 @@ function startTimer() {
         timerCard.textContent = "Time remaining: " + timerCount
     if (timerCount == 0) {
         clearInterval(timer)
+        gameOver;
     }
     }, 1000)
 }
 
-let currentQuestion = questionsList[counter];
+var currentQuestion = questionsList[counter];
 function displayQuestion() {
     startButton.style.visibility = "hidden";
     question.textContent = currentQuestion.name;
@@ -83,13 +103,30 @@ function displayNextQuestion(button) {
         localStorage.setItem("scoreCount", scoreCounter);
     }
     counter++
-    console.log(counter)
     currentQuestion = questionsList[counter];
     if (counter === questionsList.length) {
-        console.log("game over")
+        gameOver();
     } else {
         new displayQuestion(currentQuestion)
     }
 }
 
 
+function gameOver() {
+    counter = 0
+    timerCard.style.visibility = "hidden"
+    question.style.visibility = "hidden"
+    answerCard.style.visibility = "hidden"
+    scoreCard.style.visibility = "hidden"
+    gameOverCard.style.visibility = "visible"
+    endgameScore.textContent = "Your score is: " + scoreCounter;
+    var resetButton = document.createElement("button");
+    gameOverCard.appendChild(resetButton)
+    resetButton.addEventListener("click", resetGame)
+}
+
+function resetGame() {
+    counter = 0
+    localStorage.clear()
+    location.reload()
+}
