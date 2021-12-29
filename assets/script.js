@@ -6,6 +6,7 @@ var answerCard = document.querySelector(".answer-card");
 var scoreCard = document.querySelector(".score-card")
 var gameOverCard = document.querySelector(".game-over-card")
 var endgameScore = document.querySelector("#endgame-score")
+var resetButton = document.querySelector(".reset-button")
 var timerCount = 60;
 var counter = 0;
 var scoreCounter = 0;
@@ -84,6 +85,7 @@ function displayQuestion() {
             var answerButton = document.createElement("Button");
             answerButton.textContent = item;
             answerButton.setAttribute("value", answerButton.textContent);
+            answerButton.setAttribute("class", "answer-buttons")
             answerCard.append(answerButton);
             answerButton.addEventListener("click", displayNextQuestion)
     })
@@ -120,8 +122,6 @@ function gameOver() {
     scoreCard.style.visibility = "hidden"
     gameOverCard.style.visibility = "visible"
     endgameScore.textContent = "Your score is: " + scoreCounter;
-    var resetButton = document.createElement("button");
-    gameOverCard.appendChild(resetButton)
     resetButton.addEventListener("click", resetGame)
 }
 

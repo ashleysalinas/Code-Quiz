@@ -1,0 +1,53 @@
+* {
+    font-family: "Andale Mono", "monospace";
+}
+
+header {
+    font-size: 40px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 28px;
+    text-align: center;
+}
+
+.start-button {
+    margin-left: 680px;
+    background-color: #DDA0DD;
+    font-size: 24px;
+}
+
+.question-card {
+    text-align: center;
+    font-size: 28px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.answer-buttons {
+   background-color: white;
+   border: white;
+   display: block;
+   margin-left: 620px;
+   font-size: 24px;
+}
+
+.answer-buttons:hover {
+    background-color: #DDA0DD;
+ }
+
+.game-over-card {
+    margin-top: -230px;
+    text-align: center;
+}
+
+.bottom-card {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.reset-button {
+    padding: 60px 60px 60px 60px
+}

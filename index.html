@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
+    <link rel="stylesheet" type="text/css" href="./assets/style.css" />
 </head>
 <body>
-    <header>Code Quiz
-        <button class="start-button">Start</button>
-    </header>
+    <div>
+    <header>Code Quiz</header>
+    </div>
     <div class="intro-card">
-    <h2>Want to test your knowledge of code? Click the button to start</h2>
+    <h2>Want to test your knowledge of code? Click the button below to start.</h2>
+    <button class="start-button">Start</button>
     </div>
     <main>
         <section>
@@ -20,7 +22,7 @@
         <section>
             <div class="answer-card"></div>
         </section>
-        <section>
+        <section class="bottom-card">
             <div class="timer-card"></div>
             <div class="score-card"></div>
         </section>
@@ -28,6 +30,7 @@
             <div class="game-over-card" style="visibility: hidden;">
                 <h2>Game Over!</h2>
                 <h3 id="endgame-score"></h3>
+                <button class="reset-button"> Start Over</button>
             </div>
         </section>
     </main>
