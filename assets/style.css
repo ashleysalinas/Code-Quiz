@@ -49,5 +49,7 @@ h2 {
 }
 
 .reset-button {
-    padding: 60px 60px 60px 60px
+    padding: 10px 10px 10px 10px;
+    background-color: #DDA0DD;
+    font-size: medium;
 }
