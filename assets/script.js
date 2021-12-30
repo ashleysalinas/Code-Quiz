@@ -1,4 +1,5 @@
 var question = document.querySelector(".question-card");
+var header = document.getElementsByTagName('header')
 var startButton = document.querySelector(".start-button");
 var timerCard = document.querySelector(".timer-card");
 var introCard = document.querySelector(".intro-card");
@@ -71,7 +72,7 @@ function startTimer() {
         timerCard.textContent = "Time remaining: " + timerCount
     if (timerCount == 0) {
         clearInterval(timer)
-        gameOver;
+        gameOver();
     }
     }, 1000)
 }
@@ -130,3 +131,5 @@ function resetGame() {
     localStorage.clear()
     location.reload()
 }
+
+
