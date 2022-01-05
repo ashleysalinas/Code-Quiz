@@ -1,5 +1,6 @@
 # Code Quiz
 ![](codequiz.gif)
+
 Week 4 - Web APIs assignment for the Trilogy/Southern Methodist University Web Development Bootcamp.
 
 ## About
